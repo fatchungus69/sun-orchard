@@ -220,27 +220,30 @@
     #flavors .section-label, #flavors .section-title { display: block; }
     .flavors-intro { max-width: 540px; margin: 16px auto 56px; opacity: 0.75; line-height: 1.7; }
 
-    /* #4 — 2 rows of 3 */
     .flavors-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px; max-width: 1000px; margin: 0 auto;
     }
     .flavor-card {
-      background: white; border-radius: 24px; padding: 36px 24px 28px;
+      background: white; border-radius: 24px; padding: 36px 24px 0;
       border: 1.5px solid var(--warm-tan); cursor: pointer;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
       position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
     }
-    .flavor-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; }
-    .flavor-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 50px rgba(74,44,10,0.12); }
+    /* color wash overlay */
+    .flavor-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.35s; pointer-events: none; }
+    .flavor-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 24px 60px rgba(74,44,10,0.14); }
     .flavor-card:hover::before { opacity: 1; }
-    .fc-classic::before  { background: linear-gradient(135deg, rgba(212,168,67,0.07), transparent); }
-    .fc-bbq::before      { background: linear-gradient(135deg, rgba(139,58,15,0.07), transparent); }
-    .fc-honey::before    { background: linear-gradient(135deg, rgba(245,200,66,0.1), transparent); }
-    .fc-pickle::before   { background: linear-gradient(135deg, rgba(92,122,62,0.08), transparent); }
-    .fc-spicy::before    { background: linear-gradient(135deg, rgba(196,110,26,0.08), transparent); }
-    .fc-sea::before      { background: linear-gradient(135deg, rgba(168,200,232,0.1), transparent); }
+    .fc-classic::before  { background: linear-gradient(160deg, rgba(212,168,67,0.13), transparent 60%); }
+    .fc-bbq::before      { background: linear-gradient(160deg, rgba(139,58,15,0.12), transparent 60%); }
+    .fc-honey::before    { background: linear-gradient(160deg, rgba(245,200,66,0.15), transparent 60%); }
+    .fc-pickle::before   { background: linear-gradient(160deg, rgba(92,122,62,0.12), transparent 60%); }
+    .fc-spicy::before    { background: linear-gradient(160deg, rgba(220,60,20,0.1), transparent 60%); }
+    .fc-sea::before      { background: linear-gradient(160deg, rgba(100,160,200,0.12), transparent 60%); }
+
+    .flavor-card-body { flex: 1; padding-bottom: 28px; position: relative; z-index: 1; }
     .flavor-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
     .flavor-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
     .flavor-desc { font-size: 0.83rem; opacity: 0.65; line-height: 1.5; }
@@ -251,11 +254,113 @@
     .tag-pickle  { background: #E8F2DC; color: var(--leaf); }
     .tag-spicy   { background: #FFE5D0; color: var(--amber); }
     .tag-sea     { background: #E0F0FF; color: #5588AA; }
+
+    /* Slide-up waitlist button */
+    .flavor-cta {
+      position: relative; z-index: 1;
+      background: var(--bark); color: white;
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.04em; text-align: center; cursor: pointer; border: none;
+      width: calc(100% + 0px);
+      margin: 0 -0px;
+      border-radius: 0 0 22px 22px;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .flavor-cta:hover { background: var(--rust); }
+    .flavor-card:hover .flavor-cta { transform: translateY(0); }
+
+    /* available cards get amber CTA */
+    .fc-classic .flavor-cta,
+    .fc-honey .flavor-cta { background: var(--amber); }
+    .fc-classic .flavor-cta:hover,
+    .fc-honey .flavor-cta:hover { background: var(--rust); }
+
     .coming-soon-badge {
       position: absolute; top: 16px; right: 16px;
       background: var(--bark); color: var(--warm-tan);
       font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; padding: 4px 10px; border-radius: 10px;
+      z-index: 2;
+    }
+
+    /* ─── SKIN-ON BANNER ─── */
+    #skin-banner {
+      background: var(--bark);
+      padding: 100px 48px;
+      color: white;
+      position: relative; overflow: hidden;
+    }
+    #skin-banner::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,67,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .skin-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .skin-eyebrow {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .skin-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900;
+      color: white; line-height: 1.15; margin-bottom: 24px;
+    }
+    .skin-title em { color: var(--gold); }
+    .skin-body {
+      font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.72);
+      margin-bottom: 40px;
+    }
+    .skin-stats {
+      display: flex; gap: 32px;
+    }
+    .skin-stat { display: flex; flex-direction: column; }
+    .skin-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: var(--gold); line-height: 1;
+    }
+    .skin-stat-label {
+      font-size: 0.75rem; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px;
+    }
+    /* right side comparison cards */
+    .skin-right {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .skin-card {
+      flex: 1; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 28px 22px;
+    }
+    .skin-card-good {
+      background: rgba(212,168,67,0.1);
+      border-color: rgba(212,168,67,0.3);
+    }
+    .skin-card-icon { font-size: 2rem; margin-bottom: 10px; }
+    .skin-card-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: white;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .skin-card-good .skin-card-label { color: var(--gold); border-color: rgba(212,168,67,0.2); }
+    .skin-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .skin-list li { font-size: 0.83rem; line-height: 1.4; }
+    .skin-list-bad li { color: rgba(255,255,255,0.45); }
+    .skin-list-good li { color: rgba(255,255,255,0.85); }
+    .skin-vs {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 900; color: var(--gold);
+      opacity: 0.6; flex-shrink: 0;
     }
 
     /* ─── STORY — #5 & #6 full glow-up ─── */
@@ -365,20 +470,65 @@
     .stat-label { font-size: 0.75rem; opacity: 0.55; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; display: block; color: white; }
 
     /* ─── PROCESS ─── */
-    #process { background: white; text-align: center; }
-    #process .section-label, #process .section-title { display: block; }
-    .process-sub { max-width: 480px; margin: 14px auto 60px; opacity: 0.65; line-height: 1.7; }
-    .process-steps { display: flex; justify-content: center; align-items: flex-start; gap: 0; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
-    .process-step { flex: 1; min-width: 160px; padding: 20px; }
-    .step-num {
-      width: 52px; height: 52px; border-radius: 50%; background: var(--amber); color: white;
-      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
-      box-shadow: 0 6px 20px rgba(196,110,26,0.3);
+    #process {
+      background: linear-gradient(180deg, #FFFAF2 0%, #FDF6EC 100%);
+      text-align: center; overflow: hidden;
     }
-    .process-step h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .process-step p { font-size: 0.82rem; opacity: 0.65; line-height: 1.5; }
-    .step-arrow { align-self: center; margin-bottom: 40px; opacity: 0.25; font-size: 1.5rem; }
+    #process .section-label, #process .section-title { display: block; }
+    .process-sub { max-width: 480px; margin: 14px auto 80px; opacity: 0.65; line-height: 1.7; }
+
+    .process-timeline {
+      position: relative; max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; align-items: start;
+    }
+    /* connecting line across all steps */
+    .process-timeline::before {
+      content: '';
+      position: absolute; top: 64px; left: calc(12.5%); right: calc(12.5%);
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--amber), var(--gold));
+      z-index: 0;
+    }
+    .process-step {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0 20px 0; position: relative; z-index: 1;
+    }
+    /* big illustrated icon circle */
+    .step-icon {
+      width: 128px; height: 128px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; margin-bottom: 28px;
+      position: relative; flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 2;
+    }
+    .step-icon::after {
+      content: attr(data-num);
+      position: absolute; top: -6px; right: -6px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--bark); color: white;
+      font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .process-step:hover .step-icon { transform: scale(1.12) rotate(-4deg); }
+
+    .si-1 { background: radial-gradient(135deg, #E8F4D8, #C8E8A0); box-shadow: 0 12px 40px rgba(92,122,62,0.25); }
+    .si-2 { background: radial-gradient(135deg, #FFF3D0, #F5D878); box-shadow: 0 12px 40px rgba(212,168,67,0.25); }
+    .si-3 { background: radial-gradient(135deg, #FFE8D0, #F5B878); box-shadow: 0 12px 40px rgba(196,110,26,0.25); }
+    .si-4 { background: radial-gradient(135deg, #D8EEF8, #A8D4F0); box-shadow: 0 12px 40px rgba(100,160,210,0.2); }
+
+    .step-content { text-align: center; }
+    .step-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--amber); margin-bottom: 8px; display: block;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--bark);
+    }
+    .step-desc { font-size: 0.85rem; opacity: 0.65; line-height: 1.6; max-width: 200px; margin: 0 auto; }
 
     /* ─── CTA ─── */
     #cta {
@@ -566,12 +716,51 @@
     <div class="why-text">
       <span class="section-label reveal">Why Sun Orchard?</span>
       <h2 class="section-title reveal reveal-delay-1">Not just a snack.<br/><em>An experience.</em></h2>
-      <p class="reveal reveal-delay-2" style="opacity:0.7; line-height:1.8;">Our cashews are sourced exclusively from our small, family-run farm where every nut is grown the old-fashioned way — no shortcuts, no chemicals, just rich soil, warm sun, and generations of expertise.</p>
+      <p class="reveal reveal-delay-2" style="opacity:0.7; line-height:1.8;">Our cashews are sourced exclusively from small, family-run farms where every nut is grown the old-fashioned way — no shortcuts, no chemicals, just rich soil, warm sun, and generations of expertise.</p>
       <div class="why-pillars">
-        <div class="pillar reveal reveal-delay-1"><div class="pillar-icon">🌱</div><h4>Organic Soil</h4><p>Mineral-rich earth, zero synthetic fertilizers, natural spring water — the way nature intended.</p></div>
-        <div class="pillar reveal reveal-delay-2"><div class="pillar-icon">🔥</div><h4>Lightly Roasted</h4><p>A careful roast crisps the skin perfectly, locking in that buttery crunch (and that fiber!) without over-cooking.</p></div>
+        <div class="pillar reveal reveal-delay-1"><div class="pillar-icon">🌱</div><h4>Organic Soil</h4><p>Mineral-rich earth, zero synthetic fertilizers — the way nature intended.</p></div>
+        <div class="pillar reveal reveal-delay-2"><div class="pillar-icon">🔥</div><h4>Roasted Skin-On</h4><p>We roast with the skin on — still edible, adds serious crunch, and packs in extra fiber most cashews strip away.</p></div>
         <div class="pillar reveal reveal-delay-3"><div class="pillar-icon">🤲</div><h4>Handpicked</h4><p>No machines. Real hands selecting only the premium, large-grade nuts.</p></div>
         <div class="pillar reveal reveal-delay-4"><div class="pillar-icon">🌍</div><h4>Farm-to-Bag</h4><p>Traceable supply chain. You know exactly where your cashews come from.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SKIN-ON CALLOUT BANNER ═══ -->
+<div id="skin-banner">
+  <div class="skin-inner">
+    <div class="skin-left reveal">
+      <span class="skin-eyebrow">The difference you can taste</span>
+      <h2 class="skin-title">Skin-on. <em>The way nature intended.</em></h2>
+      <p class="skin-body">Most cashews are blanched and stripped before roasting — you lose the skin, you lose the texture, you lose the fiber. We roast ours whole, skin-on, so every bite has that signature crunch, a deeper roasted flavor, and a natural fiber boost most snacks can't touch.</p>
+      <div class="skin-stats">
+        <div class="skin-stat"><span class="skin-stat-num">3×</span><span class="skin-stat-label">More fiber than skinless</span></div>
+        <div class="skin-stat"><span class="skin-stat-num">100%</span><span class="skin-stat-label">Edible skin — seriously</span></div>
+        <div class="skin-stat"><span class="skin-stat-num">1</span><span class="skin-stat-label">Ingredient: cashews</span></div>
+      </div>
+    </div>
+    <div class="skin-right reveal reveal-delay-2">
+      <div class="skin-card">
+        <div class="skin-card-icon">🥜</div>
+        <div class="skin-card-label">Other cashews</div>
+        <ul class="skin-list skin-list-bad">
+          <li>❌ Skin stripped before roasting</li>
+          <li>❌ Fiber lost in processing</li>
+          <li>❌ Bland, uniform texture</li>
+          <li>❌ Artificial coatings for flavor</li>
+        </ul>
+      </div>
+      <div class="skin-vs">VS</div>
+      <div class="skin-card skin-card-good">
+        <div class="skin-card-icon">☀️</div>
+        <div class="skin-card-label">Sun Orchard</div>
+        <ul class="skin-list skin-list-good">
+          <li>✅ Roasted whole, skin-on</li>
+          <li>✅ Natural fiber intact</li>
+          <li>✅ Extra crunch in every bite</li>
+          <li>✅ Zero artificial anything</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -581,15 +770,66 @@
 <section id="flavors">
   <span class="section-label reveal">The Lineup</span>
   <h2 class="section-title reveal reveal-delay-1">Every flavor, <em>unforgettable.</em></h2>
-  <p class="flavors-intro reveal reveal-delay-2">Start with the world's best cashew, then take it somewhere extraordinary. Each flavor is crafted to let the nut's natural nuttiness shine.</p>
-  <!-- #4 — 2 rows of 3 -->
+  <p class="flavors-intro reveal reveal-delay-2">Start with the world's best cashew, then take it somewhere extraordinary. Each flavor is crafted to let the nut's natural creaminess shine.</p>
   <div class="flavors-grid">
-    <div class="flavor-card fc-classic reveal"><span class="flavor-emoji">🥜</span><div class="flavor-name">Classic Sea Salt</div><p class="flavor-desc">The purest expression — buttery, clean, and impossibly crispy. Finished with a whisper of flaky sea salt.</p><span class="flavor-tag tag-classic">The Original</span></div>
-    <div class="flavor-card fc-honey reveal reveal-delay-1"><span class="flavor-emoji">🍯</span><div class="flavor-name">Honey Roasted</div><p class="flavor-desc">Pure wildflower honey meets a slow roast. Sweet, caramelized, with a golden crunch you can't put down.</p><span class="flavor-tag tag-honey">Fan Favorite</span></div>
-    <div class="flavor-card fc-bbq reveal reveal-delay-2"><div class="coming-soon-badge">Coming Soon</div><span class="flavor-emoji">🔥</span><div class="flavor-name">Smoky BBQ</div><p class="flavor-desc">Low and slow smokehouse vibes. Deep, tangy, with a hint of mesquite that lingers in all the right ways.</p><span class="flavor-tag tag-bbq">Bold Pick</span></div>
-    <div class="flavor-card fc-pickle reveal reveal-delay-1"><div class="coming-soon-badge">Coming Soon</div><span class="flavor-emoji">🥒</span><div class="flavor-name">Dill Pickle</div><p class="flavor-desc">Tangy, briny, and addictively punchy. For those who know — this one hits different.</p><span class="flavor-tag tag-pickle">Cult Status</span></div>
-    <div class="flavor-card fc-spicy reveal reveal-delay-2"><div class="coming-soon-badge">Coming Soon</div><span class="flavor-emoji">🌶️</span><div class="flavor-name">Chili Lime</div><p class="flavor-desc">Bright citrus, slow heat, and a finish that wakes everything up. Snacking, elevated.</p><span class="flavor-tag tag-spicy">Heat Seeker</span></div>
-    <div class="flavor-card fc-sea reveal reveal-delay-3"><div class="coming-soon-badge">Coming Soon</div><span class="flavor-emoji">🧂</span><div class="flavor-name">Truffle & Herb</div><p class="flavor-desc">Earthy truffle, fragrant rosemary, a touch of garlic. The snack you bring to impress.</p><span class="flavor-tag tag-sea">Premium</span></div>
+    <div class="flavor-card fc-classic reveal">
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🥜</span>
+        <div class="flavor-name">Classic Sea Salt</div>
+        <p class="flavor-desc">The purest expression — buttery, clean, and impossibly crispy. Finished with a whisper of flaky sea salt.</p>
+        <span class="flavor-tag tag-classic">The Original</span>
+      </div>
+      <button class="flavor-cta">🛒 Join Waitlist</button>
+    </div>
+    <div class="flavor-card fc-honey reveal reveal-delay-1">
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🍯</span>
+        <div class="flavor-name">Honey Roasted</div>
+        <p class="flavor-desc">Pure wildflower honey meets a slow roast. Sweet, caramelized, with a golden crunch you can't put down.</p>
+        <span class="flavor-tag tag-honey">Fan Favorite</span>
+      </div>
+      <button class="flavor-cta">🛒 Join Waitlist</button>
+    </div>
+    <div class="flavor-card fc-bbq reveal reveal-delay-2">
+      <div class="coming-soon-badge">Coming Soon</div>
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🔥</span>
+        <div class="flavor-name">Smoky BBQ</div>
+        <p class="flavor-desc">Low and slow smokehouse vibes. Deep, tangy, with a hint of mesquite that lingers in all the right ways.</p>
+        <span class="flavor-tag tag-bbq">Bold Pick</span>
+      </div>
+      <button class="flavor-cta">🔔 Notify Me</button>
+    </div>
+    <div class="flavor-card fc-pickle reveal reveal-delay-1">
+      <div class="coming-soon-badge">Coming Soon</div>
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🥒</span>
+        <div class="flavor-name">Dill Pickle</div>
+        <p class="flavor-desc">Tangy, briny, and addictively punchy. For those who know — this one hits different.</p>
+        <span class="flavor-tag tag-pickle">Cult Status</span>
+      </div>
+      <button class="flavor-cta">🔔 Notify Me</button>
+    </div>
+    <div class="flavor-card fc-spicy reveal reveal-delay-2">
+      <div class="coming-soon-badge">Coming Soon</div>
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🌶️</span>
+        <div class="flavor-name">Chili Lime</div>
+        <p class="flavor-desc">Bright citrus, slow heat, and a finish that wakes everything up. Snacking, elevated.</p>
+        <span class="flavor-tag tag-spicy">Heat Seeker</span>
+      </div>
+      <button class="flavor-cta">🔔 Notify Me</button>
+    </div>
+    <div class="flavor-card fc-sea reveal reveal-delay-3">
+      <div class="coming-soon-badge">Coming Soon</div>
+      <div class="flavor-card-body">
+        <span class="flavor-emoji">🧂</span>
+        <div class="flavor-name">Truffle & Herb</div>
+        <p class="flavor-desc">Earthy truffle, fragrant rosemary, a touch of garlic. The snack you bring to impress.</p>
+        <span class="flavor-tag tag-sea">Premium</span>
+      </div>
+      <button class="flavor-cta">🔔 Notify Me</button>
+    </div>
   </div>
 </section>
 
@@ -613,7 +853,7 @@
       <div class="story-quote-card">
         "Why can't something taste delicious <em>and</em> be good for you?"
       </div>
-      <p class="founder-intro">Health nut. Flavor obsessive. The guy who got tired of compromising: so he built something better.</p>
+      <p class="founder-intro">Health nut. Flavor obsessive. The guy who got tired of compromising — so he built something better.</p>
     </div>
 
     <!-- Right: story body -->
@@ -641,15 +881,46 @@
 <section id="process">
   <span class="section-label reveal">From Farm to Bag</span>
   <h2 class="section-title reveal reveal-delay-1">How we do <em>things differently.</em></h2>
-  <p class="process-sub reveal reveal-delay-2">Four steps. Zero shortcuts.</p>
-  <div class="process-steps">
-    <div class="process-step reveal"><div class="step-num">1</div><h4>Small Farm Sourcing</h4><p>We partner exclusively with family farms where quality is personal.</p></div>
-    <div class="step-arrow reveal">→</div>
-    <div class="process-step reveal reveal-delay-1"><div class="step-num">2</div><h4>Handpicked Selection</h4><p>Only large-grade cashews make the cut. Every batch sorted by hand.</p></div>
-    <div class="step-arrow reveal reveal-delay-1">→</div>
-    <div class="process-step reveal reveal-delay-2"><div class="step-num">3</div><h4>Lightly Roasted</h4><p>Roasted just enough to crisp the skin and unlock the buttery flavor.</p></div>
-    <div class="step-arrow reveal reveal-delay-2">→</div>
-    <div class="process-step reveal reveal-delay-3"><div class="step-num">4</div><h4>Sealed Fresh</h4><p>Nitrogen-flushed bags lock in peak freshness from farm to your hands.</p></div>
+  <p class="process-sub reveal reveal-delay-2">Four steps. Zero shortcuts. Every single time.</p>
+
+  <div class="process-timeline">
+
+    <div class="process-step reveal">
+      <div class="step-icon si-1" data-num="1">🌱</div>
+      <div class="step-content">
+        <span class="step-label">Step One</span>
+        <div class="step-title">Small Farm Sourcing</div>
+        <p class="step-desc">We partner exclusively with family farms in Cambodia where quality is personal and the soil is mineral-rich.</p>
+      </div>
+    </div>
+
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-icon si-2" data-num="2">🤲</div>
+      <div class="step-content">
+        <span class="step-label">Step Two</span>
+        <div class="step-title">Handpicked Selection</div>
+        <p class="step-desc">Only large-grade cashews make the cut. Every single batch sorted by real hands — no machines, no shortcuts.</p>
+      </div>
+    </div>
+
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-icon si-3" data-num="3">🔥</div>
+      <div class="step-content">
+        <span class="step-label">Step Three</span>
+        <div class="step-title">Roasted Skin-On</div>
+        <p class="step-desc">Roasted whole with the skin intact — unlocking deeper flavor, extra crunch, and fiber most brands roast away.</p>
+      </div>
+    </div>
+
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-icon si-4" data-num="4">📦</div>
+      <div class="step-content">
+        <span class="step-label">Step Four</span>
+        <div class="step-title">Sealed Fresh</div>
+        <p class="step-desc">Nitrogen-flushed bags lock in peak freshness the moment they leave the farm — straight to your hands.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
