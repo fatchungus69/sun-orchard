@@ -90,7 +90,6 @@
     }
     .hero-title em { color: var(--amber); font-style: italic; }
 
-    /* #2 — hero subtitle with backdrop pill */
     .hero-sub {
       font-size: 1.1rem; font-weight: 400;
       color: var(--bark); margin-top: 14px;
@@ -135,15 +134,14 @@
     #why { background: var(--cream); max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .why-visual { position: relative; display: flex; align-items: center; justify-content: center; }
 
-    /* #3 — cashew SVG shape */
     .cashew-svg-wrap {
-      width: 480px; height: 260px;
+      width: 500px; height: 300px;
       display: flex; align-items: center; justify-content: center;
       animation: floatImg 4s ease-in-out infinite;
       position: relative;
     }
     @keyframes floatImg { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-14px) rotate(1deg); } }
-    .cashew-svg-wrap svg { width: 100%; height: 100%; filter: drop-shadow(0 24px 48px rgba(74,44,10,0.25)); }
+    .cashew-svg-wrap svg { width: 100%; height: 100%; overflow: visible; }
 
     .why-badge {
       position: absolute; bottom: -20px; right: -20px;
@@ -183,7 +181,6 @@
     #flavors .section-label, #flavors .section-title { display: block; }
     .flavors-intro { max-width: 540px; margin: 16px auto 56px; opacity: 0.75; line-height: 1.7; }
 
-    /* #4 — 2 rows of 3 */
     .flavors-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -221,14 +218,13 @@
       text-transform: uppercase; padding: 4px 10px; border-radius: 10px;
     }
 
-    /* ─── STORY — #5 & #6 full glow-up ─── */
+    /* ─── STORY ─── */
     #story {
       background: linear-gradient(145deg, #2C1A04 0%, #4A2C0A 40%, #3A2008 100%);
       color: white;
       position: relative; overflow: hidden;
       padding: 100px 48px;
     }
-    /* decorative blobs */
     #story::before {
       content: '';
       position: absolute; top: -120px; right: -80px;
@@ -243,7 +239,6 @@
       background: radial-gradient(circle, rgba(196,110,26,0.15), transparent 70%);
       pointer-events: none;
     }
-    /* floating cashew decorations */
     .story-deco {
       position: absolute; opacity: 0.06; font-size: 8rem;
       pointer-events: none; user-select: none;
@@ -254,7 +249,6 @@
     .story-header {
       text-align: center; margin-bottom: 70px; position: relative; z-index: 2;
     }
-    /* #5 — bigger "Our Story" label */
     .story-header .section-label {
       font-size: 2rem; color: var(--gold); display: block; margin-bottom: 12px;
     }
@@ -270,7 +264,6 @@
       position: relative; z-index: 2;
     }
 
-    /* left side — founder card */
     .story-founder-card {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(212,168,67,0.25);
@@ -297,12 +290,10 @@
     }
     .founder-intro { margin-top: 20px; font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.65); }
 
-    /* right side */
     .story-right p { font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.82); margin-bottom: 22px; }
     .story-right p em { color: var(--gold); font-style: italic; }
     .story-right strong { color: var(--gold); }
 
-    /* highlight pull-out box */
     .story-highlight {
       background: rgba(212,168,67,0.1);
       border: 1px solid rgba(212,168,67,0.3);
@@ -384,7 +375,7 @@
       nav ul { display: none; }
       section { padding: 70px 24px; }
       #why { grid-template-columns: 1fr; gap: 40px; }
-      .cashew-svg-wrap { width: 280px; height: 280px; margin: 0 auto; }
+      .cashew-svg-wrap { width: 300px; height: 200px; margin: 0 auto; }
       .story-inner { grid-template-columns: 1fr; gap: 40px; }
       .why-pillars { grid-template-columns: 1fr; }
       #values { padding: 24px; gap: 20px; }
@@ -407,10 +398,9 @@
   </ul>
 </nav>
 
-<!-- ═══ HERO WRAPPER — orchard outside hero overflow ═══ -->
+<!-- ═══ HERO WRAPPER ═══ -->
 <div style="position:relative; overflow:visible;">
 
-<!-- ═══ HERO ═══ -->
 <section id="hero">
   <div class="sky-bg"></div>
   <div class="cloud c1"></div>
@@ -474,7 +464,7 @@
   </div>
 </section>
 
-<!-- Orchard SVG outside hero so overflow:hidden doesn't clip it -->
+<!-- Orchard SVG -->
 <svg style="position:absolute; bottom:0; left:0; width:100%; height:52%; pointer-events:none; z-index:5;" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grassGrad" x1="0" y1="0" x2="0" y2="1">
@@ -494,7 +484,7 @@
   <ellipse cx="720" cy="320" rx="70" ry="14" fill="#C8A870" opacity="0.3"/>
 </svg>
 
-</div><!-- end hero wrapper -->
+</div>
 
 <!-- ═══ VALUES STRIP ═══ -->
 <div id="values">
@@ -508,103 +498,99 @@
 <!-- ═══ WHY US ═══ -->
 <div style="padding: 100px 48px; background: var(--cream);">
   <div id="why">
-    <!-- Cashew — geometrically correct solid crescent -->
+    <!-- NEW PLUMP CASHEW SVG -->
     <div class="why-visual reveal">
       <div class="cashew-svg-wrap">
-        <!--
-          True cashew shape strategy:
-          - Start at left tip (low-left)
-          - Outer arc sweeps up and right in a large curve (the back/outer edge)
-          - Arrive at right tip (low-right)
-          - Inner arc sweeps back left in a tighter curve (the belly/concave inner edge)
-          - Close back at left tip
-          Result: solid crescent/kidney, wide and horizontal
-        -->
-        <svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="cGrad" x1="5%" y1="0%" x2="95%" y2="100%">
-              <stop offset="0%"   stop-color="#FFF5CC"/>
-              <stop offset="30%"  stop-color="#EDD060"/>
-              <stop offset="65%"  stop-color="#CFA030"/>
-              <stop offset="100%" stop-color="#9A7018"/>
+            <linearGradient id="cGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#F5E6B8"/>
+              <stop offset="25%"  stop-color="#E8C878"/>
+              <stop offset="55%"  stop-color="#D4A84A"/>
+              <stop offset="80%"  stop-color="#C49538"/>
+              <stop offset="100%" stop-color="#A87828"/>
             </linearGradient>
-            <radialGradient id="cShine" cx="30%" cy="25%" r="55%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.45)"/>
+            <radialGradient id="cShine" cx="35%" cy="30%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
               <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
             </radialGradient>
-            <filter id="cDrop" x="-8%" y="-8%" width="120%" height="140%">
-              <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#5A3000" flood-opacity="0.45"/>
+            <filter id="cDrop" x="-12%" y="-8%" width="130%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#5A3000" flood-opacity="0.3"/>
             </filter>
           </defs>
 
-          <!-- 
-            Left tip: (42, 210)   Right tip: (438, 210)
-            Outer arc control points arch high up — peak around y=28
-            Inner arc control points dip only moderately — peak around y=140
-            This gives a FAT solid crescent, thick in the middle, tapering at tips
-          -->
+          <!-- Plump cashew body - thick kidney/bean shape -->
           <path d="
-            M 42,210
-            C 10,160  18,60   100,30
-            C 180,2   300,2   380,30
-            C 462,60  470,160 438,210
-            C 410,240 390,252 360,248
-            C 310,242 270,210 250,178
-            C 232,148 238,118 252,100
-            C 220,112 196,138 188,168
-            C 178,202 192,238 220,252
-            C 190,252 155,242 120,228
-            C 88,216 62,225 42,210 Z"
+            M 95,235
+            C 55,215  30,175  28,140
+            C 25,100  40,62   75,40
+            C 115,15  170,8   230,18
+            C 295,28  355,50  400,75
+            C 445,100 475,138 478,175
+            C 482,218 455,252 415,262
+            C 375,272 330,258 290,235
+            C 255,215 235,188 225,165
+            C 218,148 215,132 218,118
+            C 210,128 198,148 195,172
+            C 190,200 200,230 225,250
+            C 200,255 170,258 140,252
+            C 115,242 98,240 95,235
+            Z"
             fill="url(#cGrad)" filter="url(#cDrop)"/>
 
-          <!-- Shine overlay same path -->
+          <!-- Shine overlay -->
           <path d="
-            M 42,210
-            C 10,160  18,60   100,30
-            C 180,2   300,2   380,30
-            C 462,60  470,160 438,210
-            C 410,240 390,252 360,248
-            C 310,242 270,210 250,178
-            C 232,148 238,118 252,100
-            C 220,112 196,138 188,168
-            C 178,202 192,238 220,252
-            C 190,252 155,242 120,228
-            C 88,216 62,225 42,210 Z"
+            M 95,235
+            C 55,215  30,175  28,140
+            C 25,100  40,62   75,40
+            C 115,15  170,8   230,18
+            C 295,28  355,50  400,75
+            C 445,100 475,138 478,175
+            C 482,218 455,252 415,262
+            C 375,272 330,258 290,235
+            C 255,215 235,188 225,165
+            C 218,148 215,132 218,118
+            C 210,128 198,148 195,172
+            C 190,200 200,230 225,250
+            C 200,255 170,258 140,252
+            C 115,242 98,240 95,235
+            Z"
             fill="url(#cShine)"/>
 
-          <!-- Ridge line: inner curve of the belly -->
-          <path d="M 252,102 C 236,128 228,158 236,184 C 244,210 262,232 285,244"
-            stroke="#A07018" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <!-- Ridge crease line -->
+          <path d="M 222,120 C 212,145 205,175 210,205 C 216,230 230,248 248,258"
+            stroke="#B08028" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.45"/>
 
-          <!-- Highlight strokes top of outer arc -->
-          <path d="M 72,80 C 120,36 200,14 280,14 C 360,14 420,46 450,90"
-            stroke="rgba(255,255,255,0.5)" stroke-width="10" stroke-linecap="round" fill="none"/>
-          <path d="M 90,108 C 136,68 210,48 290,50"
-            stroke="rgba(255,255,255,0.28)" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <!-- Top highlight streaks -->
+          <path d="M 85,70 C 140,30 220,18 310,30 C 380,40 430,65 458,100"
+            stroke="rgba(255,255,255,0.5)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path d="M 100,100 C 155,60 240,45 330,58"
+            stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-linecap="round" fill="none"/>
 
-          <!-- Shine blob lower right body -->
-          <ellipse cx="370" cy="210" rx="30" ry="13" fill="rgba(255,255,255,0.18)" transform="rotate(20,370,210)"/>
+          <!-- Highlight blobs -->
+          <ellipse cx="160" cy="60" rx="20" ry="8" fill="rgba(255,255,255,0.2)" transform="rotate(-15,160,60)"/>
+          <ellipse cx="390" cy="200" rx="22" ry="10" fill="rgba(255,255,255,0.15)" transform="rotate(25,390,200)"/>
 
-          <!-- Text along the curve of the nut body -->
-          <text x="120" y="115"
-            text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
-            font-size="52" font-weight="900" fill="#3A1A02" opacity="0.88"
-            transform="rotate(-22,120,115)">Big</text>
+          <!-- Text -->
+          <text x="155" y="140"
+            text-anchor="middle" font-family="'Playfair Display',Georgia,serif"
+            font-size="56" font-weight="900" fill="#3A1A02" opacity="0.88"
+            transform="rotate(-12,155,140)">Big</text>
 
-          <text x="248" y="88"
-            text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
-            font-size="44" font-weight="900" font-style="italic" fill="#B85010" opacity="0.9"
-            transform="rotate(0,248,88)">A**</text>
+          <text x="275" y="130"
+            text-anchor="middle" font-family="'Playfair Display',Georgia,serif"
+            font-size="48" font-weight="900" font-style="italic" fill="#B85010" opacity="0.9"
+            transform="rotate(2,275,130)">A**</text>
 
-          <text x="368" y="118"
-            text-anchor="middle" font-family="Georgia,'Times New Roman',serif"
-            font-size="40" font-weight="900" fill="#3A1A02" opacity="0.85"
-            transform="rotate(22,368,118)">Cashews.</text>
+          <text x="385" y="165"
+            text-anchor="middle" font-family="'Playfair Display',Georgia,serif"
+            font-size="42" font-weight="900" fill="#3A1A02" opacity="0.85"
+            transform="rotate(14,385,165)">Cashews.</text>
 
-          <text x="370" y="148"
-            text-anchor="middle" font-family="cursive" font-size="16"
-            fill="#6B3E1A" opacity="0.48"
-            transform="rotate(22,370,148)">(yes, really)</text>
+          <text x="385" y="195"
+            text-anchor="middle" font-family="'Caveat',cursive" font-size="18"
+            fill="#6B3E1A" opacity="0.5"
+            transform="rotate(14,385,195)">(yes, really)</text>
         </svg>
       </div>
 
@@ -633,7 +619,6 @@
   <span class="section-label reveal">The Lineup</span>
   <h2 class="section-title reveal reveal-delay-1">Every flavor, <em>unforgettable.</em></h2>
   <p class="flavors-intro reveal reveal-delay-2">Start with the world's best cashew, then take it somewhere extraordinary. Each flavor is crafted to let the nut's natural creaminess shine.</p>
-  <!-- #4 — 2 rows of 3 -->
   <div class="flavors-grid">
     <div class="flavor-card fc-classic reveal"><span class="flavor-emoji">🥜</span><div class="flavor-name">Classic Sea Salt</div><p class="flavor-desc">The purest expression — buttery, clean, and impossibly crispy. Finished with a whisper of flaky sea salt.</p><span class="flavor-tag tag-classic">The Original</span></div>
     <div class="flavor-card fc-honey reveal reveal-delay-1"><span class="flavor-emoji">🍯</span><div class="flavor-name">Honey Roasted</div><p class="flavor-desc">Pure wildflower honey meets a slow roast. Sweet, caramelized, with a golden crunch you can't put down.</p><span class="flavor-tag tag-honey">Fan Favorite</span></div>
@@ -644,19 +629,17 @@
   </div>
 </section>
 
-<!-- ═══ OUR STORY — #5 & #6 full redesign ═══ -->
+<!-- ═══ OUR STORY ═══ -->
 <section id="story">
   <div class="story-deco story-deco-1">🥜</div>
   <div class="story-deco story-deco-2">☀️</div>
 
-  <!-- Bigger, bolder header centered -->
   <div class="story-header reveal">
     <span class="section-label">Our Story</span>
     <h2 class="section-title">Rooted in <em>something real.</em></h2>
   </div>
 
   <div class="story-inner">
-    <!-- Left: founder card -->
     <div class="story-founder-card reveal">
       <div class="founder-avatar">👨‍🌾</div>
       <div class="founder-name">Jason Ma</div>
@@ -667,7 +650,6 @@
       <p class="founder-intro">Health nut. Flavor obsessive. The guy who got tired of compromising — so he built something better.</p>
     </div>
 
-    <!-- Right: story body -->
     <div class="story-right reveal reveal-delay-2">
       <p>You know that saying: <em>"The healthier something is, the worse it tastes"?</em> Jason refused to accept it. As someone who took his health seriously but also genuinely loved food, he spent years searching for a snack that didn't make him choose.</p>
       <p>He came up empty. So he did what any slightly unreasonable person with a vision does — he decided to grow it himself.</p>
