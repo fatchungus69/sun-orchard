@@ -137,25 +137,26 @@
 
     /* #3 — cashew SVG shape */
     .cashew-svg-wrap {
-      width: 420px; height: 420px;
+      width: 480px; height: 320px;
       display: flex; align-items: center; justify-content: center;
       animation: floatImg 4s ease-in-out infinite;
       position: relative;
     }
-    @keyframes floatImg { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(2deg); } }
+    @keyframes floatImg { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-14px) rotate(1deg); } }
     .cashew-svg-wrap svg { width: 100%; height: 100%; filter: drop-shadow(0 24px 48px rgba(74,44,10,0.25)); }
 
     .why-badge {
-      position: absolute; bottom: 10px; right: -10px;
+      position: absolute; bottom: -20px; right: -20px;
       background: var(--amber); color: white;
-      border-radius: 16px; padding: 14px 20px;
-      font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;
-      box-shadow: 0 8px 24px rgba(196,110,26,0.3);
+      border-radius: 20px; padding: 16px 26px;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 10px 30px rgba(196,110,26,0.4);
+      text-align: center;
     }
-    .why-badge span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 300; opacity: 0.85; }
     .badge-large {
-      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900;
-      display: inline-block; animation: bigWiggle 2.4s ease-in-out infinite; transform-origin: center bottom;
+      font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900;
+      display: block; line-height: 1;
+      animation: bigWiggle 2.4s ease-in-out infinite; transform-origin: center bottom;
     }
     @keyframes bigWiggle {
       0%,100% { transform: scale(1) rotate(0deg); }
@@ -428,8 +429,8 @@
         .ray:nth-child(8)  { animation-delay: 1.05s; }
         @keyframes sunPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         @keyframes rayPulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.8; } }
-        .sun-face { animation: sunBlink 4s ease-in-out infinite; }
-        @keyframes sunBlink { 0%,90%,100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+        .sun-face { animation: sunBlink 4s ease-in-out infinite; transform-origin: 90px 90px; }
+        @keyframes sunBlink { 0%,85%,100% { opacity: 1; } 92% { opacity: 0; } }
       </style>
       <g class="ray"><polygon points="90,8 94,28 86,28" fill="#F5C842"/></g>
       <g class="ray"><polygon points="90,8 94,28 86,28" fill="#F5C842" transform="rotate(180,90,90)"/></g>
@@ -459,7 +460,7 @@
   </div>
 
   <!-- Orchard SVG -->
-  <svg class="orchard" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="orchard" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="grassGrad" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#8BBF5A"/><stop offset="100%" stop-color="#5C7A2A"/>
@@ -502,47 +503,76 @@
 <!-- ═══ WHY US ═══ -->
 <div style="padding: 100px 48px; background: var(--cream);">
   <div id="why">
-    <!-- #3 — Cartoon cashew SVG shape -->
+    <!-- #3 — Proper crescent cashew SVG -->
     <div class="why-visual reveal">
       <div class="cashew-svg-wrap">
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="cashewGrad" cx="38%" cy="30%" r="70%">
-              <stop offset="0%" stop-color="#FFF4DC"/>
-              <stop offset="45%" stop-color="#E8C870"/>
-              <stop offset="100%" stop-color="#B8912A"/>
-            </radialGradient>
-            <radialGradient id="cashewShine" cx="30%" cy="25%" r="50%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+            <linearGradient id="cashewBody" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF0C0"/>
+              <stop offset="35%" stop-color="#E8C870"/>
+              <stop offset="70%" stop-color="#D4A840"/>
+              <stop offset="100%" stop-color="#B8882A"/>
+            </linearGradient>
+            <linearGradient id="cashewTop" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
               <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </radialGradient>
-            <filter id="cashewShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#8B5A10" flood-opacity="0.35"/>
+            </linearGradient>
+            <filter id="cShadow" x="-15%" y="-15%" width="130%" height="160%">
+              <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#7A4A08" flood-opacity="0.4"/>
             </filter>
           </defs>
-          <!-- Main cashew kidney shape -->
-          <path d="M200 80 C260 75, 320 100, 340 150 C365 210, 350 275, 305 310 C270 338, 225 345, 190 335 C145 320, 100 285, 85 245 C65 195, 75 140, 110 110 C135 88, 165 82, 200 80 Z"
-            fill="url(#cashewGrad)" filter="url(#cashewShadow)" stroke="#C8A040" stroke-width="2.5"/>
-          <!-- inner curve dent — classic cashew shape -->
-          <path d="M155 160 C165 185, 170 215, 160 250 C155 268, 148 280, 148 280"
-            stroke="#C8902A" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.4"/>
-          <!-- shine overlay -->
-          <path d="M200 80 C260 75, 320 100, 340 150 C365 210, 350 275, 305 310 C270 338, 225 345, 190 335 C145 320, 100 285, 85 245 C65 195, 75 140, 110 110 C135 88, 165 82, 200 80 Z"
-            fill="url(#cashewShine)" opacity="0.6"/>
-          <!-- subtle texture lines -->
-          <path d="M170 100 Q200 95 230 105" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none"/>
-          <path d="M145 120 Q185 112 225 122" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
 
-          <!-- Big A** Cashews text inside -->
-          <text x="200" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="900" fill="#4A2C0A" opacity="0.92">Big</text>
-          <text x="200" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="900" font-style="italic" fill="#C46E1A" opacity="0.92">A**</text>
-          <text x="204" y="292" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="900" fill="#4A2C0A" opacity="0.88">Cashews.</text>
-          <text x="204" y="318" text-anchor="middle" font-family="'Caveat', cursive" font-size="18" fill="#6B3E1A" opacity="0.55">(yes, really)</text>
+          <!-- Outer cashew crescent — wide C shape, thick, rounded ends -->
+          <!-- Bottom big arc of the crescent -->
+          <path d="
+            M 80 230
+            C 60 190, 55 140, 80 100
+            C 105 58, 155 38, 210 42
+            C 265 46, 310 72, 345 105
+            C 385 143, 410 185, 415 225
+            C 420 258, 405 285, 380 295
+            C 355 305, 320 298, 295 278
+            C 260 252, 235 215, 230 178
+            C 225 148, 240 122, 255 108
+            C 225 118, 195 140, 185 168
+            C 172 202, 185 242, 210 268
+            C 235 294, 272 308, 310 308
+            C 348 308, 385 295, 405 270
+            C 425 248, 428 215, 418 185
+            C 405 145, 378 108, 340 80
+            C 298 50, 248 32, 200 34
+            C 150 36, 100 58, 72 98
+            C 44 138, 42 192, 62 234
+            C 78 264, 108 285, 140 290
+            C 105 278, 88 256, 80 230 Z"
+            fill="url(#cashewBody)" filter="url(#cShadow)" stroke="#C09028" stroke-width="1.5"/>
+
+          <!-- Ridge line down the middle of the crescent -->
+          <path d="M 205 55 C 240 70, 330 120, 370 200 C 390 238, 392 268, 378 288"
+            stroke="#B07820" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+          <!-- Shine highlight top-left -->
+          <path d="M 100 115 C 120 80, 160 58, 205 55 C 255 52, 300 72, 330 98"
+            stroke="rgba(255,255,255,0.55)" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M 105 135 C 122 105, 158 82, 198 78"
+            stroke="rgba(255,255,255,0.3)" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+          <!-- Small shine blob on lower body -->
+          <ellipse cx="290" cy="240" rx="22" ry="12" fill="rgba(255,255,255,0.22)" transform="rotate(-30,290,240)"/>
+
+          <!-- Text — sits along the crescent body -->
+          <text x="248" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="900" fill="#3A1E04" opacity="0.9" transform="rotate(-12, 248, 148)">Big</text>
+          <text x="295" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="900" font-style="italic" fill="#C46E1A" opacity="0.92" transform="rotate(-8, 295, 200)">A**</text>
+          <text x="330" y="258" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="900" fill="#3A1E04" opacity="0.85" transform="rotate(-2, 330, 258)">Cashews.</text>
+          <text x="318" y="284" text-anchor="middle" font-family="'Caveat', cursive" font-size="16" fill="#6B3E1A" opacity="0.5" transform="rotate(-2, 318, 284)">(yes, really)</text>
         </svg>
       </div>
+
+      <!-- Fix 2: Much bigger, bolder LARGE badge -->
       <div class="why-badge">
         <span class="badge-large">LARGE</span>
-        <span>Grade Cashews Only</span>
+        <div style="font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em; margin-top: 2px;">Grade Cashews Only</div>
       </div>
     </div>
 
