@@ -321,7 +321,7 @@
       margin-bottom: 40px;
     }
     .skin-stats {
-      display: flex; gap: 32px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     }
     .skin-stat { display: flex; flex-direction: column; }
     .skin-stat-num {
@@ -334,12 +334,13 @@
     }
     /* right side comparison cards */
     .skin-right {
-      display: flex; align-items: center; gap: 16px;
+      display: flex; align-items: stretch; gap: 16px;
     }
     .skin-card {
       flex: 1; background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px; padding: 28px 22px;
+      display: flex; flex-direction: column;
     }
     .skin-card-good {
       background: rgba(212,168,67,0.1);
@@ -353,14 +354,14 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .skin-card-good .skin-card-label { color: var(--gold); border-color: rgba(212,168,67,0.2); }
-    .skin-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .skin-list { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
     .skin-list li { font-size: 0.83rem; line-height: 1.4; }
     .skin-list-bad li { color: rgba(255,255,255,0.45); }
     .skin-list-good li { color: rgba(255,255,255,0.85); }
     .skin-vs {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem; font-weight: 900; color: var(--gold);
-      opacity: 0.6; flex-shrink: 0;
+      opacity: 0.6; flex-shrink: 0; align-self: center;
     }
 
     /* ─── STORY — #5 & #6 full glow-up ─── */
@@ -717,7 +718,7 @@
       <span class="section-label reveal">Why Sun Orchard?</span>
       <h2 class="section-title reveal reveal-delay-1">Not just a snack.<br/><em>An experience.</em></h2>
       <p class="reveal reveal-delay-2" style="opacity:0.7; line-height:1.8;">Our cashews are sourced exclusively from small, family-run farms where every nut is grown the old-fashioned way — no shortcuts, no chemicals, just rich soil, warm sun, and generations of expertise.</p>
-      <div class="why-pillars">
+      <div class="why-pillars">  
         <div class="pillar reveal reveal-delay-1"><div class="pillar-icon">🌱</div><h4>Organic Soil</h4><p>Mineral-rich earth, zero synthetic fertilizers — the way nature intended.</p></div>
         <div class="pillar reveal reveal-delay-2"><div class="pillar-icon">🔥</div><h4>Roasted Skin-On</h4><p>We roast with the skin on — still edible, adds serious crunch, and packs in extra fiber most cashews strip away.</p></div>
         <div class="pillar reveal reveal-delay-3"><div class="pillar-icon">🤲</div><h4>Handpicked</h4><p>No machines. Real hands selecting only the premium, large-grade nuts.</p></div>
@@ -736,8 +737,8 @@
       <p class="skin-body">Most cashews are blanched and stripped before roasting — you lose the skin, you lose the texture, you lose the fiber. We roast ours whole, skin-on, so every bite has that signature crunch, a deeper roasted flavor, and a natural fiber boost most snacks can't touch.</p>
       <div class="skin-stats">
         <div class="skin-stat"><span class="skin-stat-num">3×</span><span class="skin-stat-label">More fiber than skinless</span></div>
-        <div class="skin-stat"><span class="skin-stat-num">100%</span><span class="skin-stat-label">Edible skin — seriously</span></div>
-        <div class="skin-stat"><span class="skin-stat-num">1</span><span class="skin-stat-label">Ingredient: cashews</span></div>
+        <div class="skin-stat"><span class="skin-stat-num">100%</span><span class="skin-stat-label">Edible skin. Seriously</span></div>
+        <div class="skin-stat"><span class="skin-stat-num">2</span><span class="skin-stat-label">Ingredients: cashews & salt</span></div>
       </div>
     </div>
     <div class="skin-right reveal reveal-delay-2">
