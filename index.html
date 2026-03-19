@@ -46,7 +46,7 @@ nav{
   display:grid;
   grid-template-columns:55% 45%;
   align-items:center;
-  padding:120px 72px 80px 72px;
+  padding:120px 72px 0 72px;
   gap:0;
   position:relative;
   overflow:hidden;
@@ -98,14 +98,15 @@ nav{
 
 .hero-right{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:flex-end;min-height:500px;opacity:1;overflow:visible;}
 .hero-woman{
-  height:105vh;
+  height:100vh;
   width:auto;
   position:absolute;
   right:-8%;
-  bottom:-20%;
+  bottom:0;
   opacity:0;
   animation:fadeIn 1.2s ease forwards 0.5s;
   object-fit:contain;
+  object-position:bottom;
 }
 
 /* TICKER */
