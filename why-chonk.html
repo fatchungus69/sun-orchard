@@ -40,14 +40,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .page-lead{font-size:clamp(18px,2vw,24px);color:rgba(250,250,248,0.6);line-height:1.85;font-style:italic;max-width:680px;}
 
 /* FOUNDER */
-.founder{padding:100px 64px;background:var(--surface);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:100%;}
+.founder{padding:100px 64px;background:var(--surface);display:grid;grid-template-columns:320px 1fr;gap:80px;align-items:center;max-width:100%;}
 .founder-img-wrap{position:relative;}
-.founder-photo{width:100%;aspect-ratio:4/5;background:var(--surface-dim);border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(201,138,16,0.25);}
-.founder-photo-placeholder{text-align:center;padding:40px;}
-.founder-photo-placeholder-icon{font-size:48px;margin-bottom:16px;opacity:0.3;}
-.founder-photo-placeholder-text{font-size:13px;color:rgba(0,0,0,0.35);font-style:italic;line-height:1.6;}
-.founder-photo-label{position:absolute;bottom:16px;left:16px;background:var(--gold);color:var(--black);padding:6px 16px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
-.founder-caption{margin-top:16px;font-size:12px;color:#999;font-style:italic;text-align:center;}
+.founder-photo{width:280px;aspect-ratio:4/5;background:var(--surface-dim);border-radius:20px;overflow:hidden;position:relative;}
+.founder-photo img{width:100%;height:100%;object-fit:cover;}
+.founder-photo-label{position:absolute;bottom:12px;left:12px;background:var(--gold);color:var(--black);padding:5px 14px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.founder-caption{margin-top:12px;font-size:12px;color:#999;font-style:italic;}
 .founder-content{}
 .founder-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block;}
 .founder-h2{font-family:'Abril Fatface',serif;font-size:clamp(36px,4vw,56px);line-height:1.05;letter-spacing:-1px;margin-bottom:28px;}
@@ -194,7 +192,6 @@ footer{background:var(--black);color:var(--warm-white);padding:64px 48px 40px;}
   <a href="index.html" class="nav-logo">CHONK</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#flavors">Flavors</a></li>
     <li><a href="#" class="active">Why Chonk</a></li>
   </ul>
   <button class="nav-cta">Get Notified</button>
@@ -213,11 +210,7 @@ footer{background:var(--black);color:var(--warm-white);padding:64px 48px 40px;}
 <section class="founder">
   <div class="founder-img-wrap">
     <div class="founder-photo">
-      <!-- Replace this placeholder with your actual photo -->
-      <div class="founder-photo-placeholder">
-        <div class="founder-photo-placeholder-icon">📸</div>
-        <p class="founder-photo-placeholder-text">Drop your founder photo here.<br/>Recommended: 4:5 ratio,<br/>natural or farm setting.</p>
-      </div>
+      <img src="me.jpg" alt="Jeffrey, Co-founder of CHONK" />
       <span class="founder-photo-label">The Founder</span>
     </div>
     <p class="founder-caption">Jeffrey — Co-founder, CHONK / Sun Orchard LLC</p>
@@ -358,41 +351,10 @@ footer{background:var(--black);color:var(--warm-white);padding:64px 48px 40px;}
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <span class="footer-chonk">CHONK</span>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <span class="footer-col-label">The Menu</span>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#flavors">Flavors</a></li>
-        <li><a href="#">Why Chonk</a></li>
-        <li><a href="#">Journal</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <span class="footer-col-label">Support</span>
-      <ul>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">Wholesale</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <span class="footer-col-label">Stay Bold</span>
-      <p style="font-size:14px;color:rgba(250,250,248,0.45);line-height:1.75;font-style:italic;margin-bottom:16px;">Tag your chonk moments @getChonk for a chance to be featured in the Journal.</p>
-      <p style="font-size:12px;color:rgba(250,250,248,0.25);letter-spacing:1px;">by Sun Orchard LLC · New York, NY</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2024 CHONK. All rights reserved. Contains: Tree Nuts (Cashews)</span>
-    <div style="display:flex;gap:28px;">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Accessibility</a>
-    </div>
-  </div>
+<footer style="background:var(--black);padding:48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,138,16,0.08);">
+  <span style="font-family:'Abril Fatface',serif;font-size:32px;color:var(--gold);opacity:0.15;user-select:none;">CHONK</span>
+  <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.15);">© 2024 Sun Orchard LLC · Contains: Tree Nuts</span>
+  <span style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,248,0.15);">@getChonk</span>
 </footer>
 
 </body>
