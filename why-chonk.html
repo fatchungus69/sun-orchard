@@ -31,13 +31,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-cta:hover{background:#b07a0e;}
 
 /* HERO */
-.page-hero{background:var(--black);padding:140px 64px 100px;position:relative;overflow:hidden;}
+.page-hero{background:var(--black);padding:140px 64px 0 64px;position:relative;overflow:hidden;display:grid;grid-template-columns:55% 45%;align-items:flex-end;}
 .page-hero::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.04;pointer-events:none;}
 .page-hero-inner{max-width:900px;position:relative;z-index:1;}
 .page-eyebrow{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(201,138,16,0.65);margin-bottom:24px;display:block;}
 .page-h1{font-family:'Abril Fatface',serif;font-size:clamp(56px,8vw,120px);color:var(--warm-white);line-height:0.9;letter-spacing:-3px;margin-bottom:32px;}
 .page-h1 em{color:var(--gold);font-style:normal;}
 .page-lead{font-size:clamp(18px,2vw,24px);color:rgba(250,250,248,0.6);line-height:1.85;font-style:italic;max-width:680px;}
+.page-hero-img{height:92vh;width:auto;position:absolute;right:-5%;bottom:-22%;opacity:0;animation:fadeIn 1.2s ease forwards 0.5s;object-fit:contain;object-position:bottom;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@media(max-width:960px){.page-hero-img{display:none;}}
 
 /* FOUNDER */
 .founder{padding:100px 64px;background:var(--surface);display:grid;grid-template-columns:320px 1fr;gap:80px;align-items:center;max-width:100%;}
@@ -200,7 +203,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
     <h1 class="page-h1">Why<br><em>CHONK?</em></h1>
     <p class="page-lead">Because every time we reached into a bag of "premium" cashews, we pulled out the same sad little cashew. We made what we couldn't find anywhere else.</p>
   </div>
+  <img class="page-hero-img" src="questiondudefinal.png" alt="CHONK" />
 </section>
+
+<!-- FOUNDER SECTION -->
 
 <!-- FOUNDER SECTION -->
 <section class="founder">
